@@ -1,4 +1,4 @@
-package june15th;
+package june15th.singleton;
 
 public class Singleton {
 	private static volatile Singleton instance = null;

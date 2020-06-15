@@ -1,4 +1,4 @@
-package june15th;
+package june15th.singleton;
 
 public class TestSIngleton {
 	public static void main(String[] args) {
