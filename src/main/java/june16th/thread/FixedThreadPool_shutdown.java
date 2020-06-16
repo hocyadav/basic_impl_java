@@ -15,6 +15,6 @@ public class FixedThreadPool_shutdown {
 		System.out.println("service.isTerminated "+service.isTerminated());//return true if all Task completed including queue
 		
 		List<Runnable> list = service.shutdownNow();//list of task that are in Queue + start shutdown
-		
+		 
 	}
 }
