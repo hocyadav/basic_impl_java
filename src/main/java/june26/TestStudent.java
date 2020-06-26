@@ -18,19 +18,32 @@ public class TestStudent {
 		return ll;
 	}
 	
+	static class NewClass implements Comparator<Integer>{
+		@Override
+		public int compare(Integer o1, Integer o2) {
+			return o2 - o1;
+		}
+	}
 	public static void main(String[] args) {
 		List<Student> allStudent = getAllStudent();
 		System.out.println(allStudent);
 		
 		//m1 with FI full method body and return type
-//		Collections.sort(allStudent, new Comparator<Student>(){
-//			@Override
-//			public int compare(Student o1, Student o2) {
-//				return o2.getId() - o1.getId();
-//			}
-//		});
-//		System.out.println(allStudent);
+		Comparator<Student> comp_Obj = new Comparator<Student>(){
+			@Override
+			public int compare(Student o1, Student o2) {
+				return o2.getId() - o1.getId();
+			}
+		};
 		
+		NewClass class1 = new NewClass(); 
+		List<Integer> li = new LinkedList<>();
+		Collections.sort(li);
+		Collections.sort(li, class1);
+		
+		Collections.sort(allStudent, comp_Obj);
+		
+		System.out.println(allStudent);
 		
 		//m1 with lambda : remove method body and return type 
 //		Collections.sort(allStudent, (o1, o2) -> {
@@ -40,8 +53,9 @@ public class TestStudent {
 		
 		
 		//m1 with lambda
-		Collections.sort(allStudent, (o1, o2) -> o2.getId() - o1.getId());
-		System.out.println(allStudent);
+//		Collections.sort(allStudent, (o1, o2) -> o2.getId() - o1.getId());
+//		System.out.println(allStudent);
+//		
 		
 	}
 }
