@@ -67,7 +67,5 @@ public class TestSort {
 		.sorted(Comparator.comparing(Employee::getSalary))//method reference
 		.forEach(System.out::println);
 		
-		
-		
 	}
 }

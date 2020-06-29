@@ -17,7 +17,6 @@ public class Test_LockCondition {
 				} catch (InterruptedException e) {e.printStackTrace();}
 			}
 		};
-		
 		new Thread(producer).start();
 		new Thread(producer).start();
 		
@@ -30,12 +29,7 @@ public class Test_LockCondition {
 				} catch (InterruptedException e) {e.printStackTrace();}
 			}
 		};
-		
 		new Thread(consumer).start();
 		new Thread(consumer).start();
-
-		
-		
-		
 	}
 }
