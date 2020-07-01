@@ -1,5 +1,5 @@
 package july1st;
-
+//https://www.baeldung.com/java-pairs
 public class CustomPair {
 	String key;
 	String val;
