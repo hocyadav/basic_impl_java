@@ -12,5 +12,12 @@ public class Stream_of_Arrays_stream3 {
 				Stream.of("omprakash", "neha", "chandan", "hariom");
 
 		streamObj.forEach(i -> System.out.println(i));
+		
+		//no type - still work 
+		Stream streamObj2 = 
+				Stream.of("omprakash", "neha", "chandan", "hariom");
+		
+		streamObj2.forEach(i -> System.out.println(i));
+		
 	}
 }
