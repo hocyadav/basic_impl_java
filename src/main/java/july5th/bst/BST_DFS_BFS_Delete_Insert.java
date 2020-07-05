@@ -108,7 +108,7 @@ class BST{
 			if(root.right == null) return root.left;
 			
 			//case 3 : 2 children -> find min from right -> replace with root -> delete that min ele
-			Node t = minFromRight(root);
+			Node t = minFromRight(root.right);
 			root.val = t.val;
 			root.right = rec_del(root.right, t.val);
 		}
