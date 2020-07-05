@@ -3,6 +3,7 @@ package july5th.bst;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**Binary tree data structure**/
 class Node{
 	int val;
 	Node left;
@@ -13,11 +14,11 @@ class Node{
 	}
 }
 
+/**Use of Binary tree data structure**/
 class BST{
 	Node root;
 	
 	/**DFS traversal - inorder, postorder, preorder**/
-	
 	public void inorder() {
 		System.out.print("Inorder : ");
 		rec_inorder(root);
@@ -74,6 +75,7 @@ class BST{
 	}
 }
 
+/**Test Binary data structure**/
 public class BST_traversal_DFS_BFS {
 	public static void main(String[] args) {
 		BST obj = new BST();
