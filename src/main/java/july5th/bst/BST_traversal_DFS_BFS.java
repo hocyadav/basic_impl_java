@@ -73,6 +73,53 @@ class BST{
 		}
 		System.out.println();
 	}
+	
+	public void insert(int key) {
+		root = rec_insert(root, key);
+	}
+
+	private Node rec_insert(Node root, int key) {
+		if (root == null) 
+			return new Node(key);
+		
+		if(key < root.val) {
+			root.left =  rec_insert(root.left, key);
+		}else {
+			root.right = rec_insert(root.right, key);
+		}
+		return root;
+	}
+	
+	public void delete(int key) {
+		root = rec_del(root, key);
+	}
+
+	private Node rec_del(Node root, int key) {
+		if(root == null) return null;
+		
+		if(key < root.val) root.left = rec_del(root.left, key);
+		else if(key > root.val) root.right = rec_del(root.right, key);
+		else {//current root node is target
+			//case 1 : 0 children
+			if(root.left == null && root.right == null) return null;
+			
+			//case 2 : 1 children
+			if(root.left == null) return root.right;
+			if(root.right == null) return root.left;
+			
+			//case 3 : 2 children -> find min from right -> replace with root -> delete that min ele
+			Node t = minFromRight(root);
+			root.val = t.val;
+			root.right = rec_del(root.right, t.val);
+		}
+		return root;
+	}
+
+	private Node minFromRight(Node root) {
+		Node t = root;
+		while(t.left != null) t = t.left;
+		return t;
+	}
 }
 
 /**Test Binary data structure**/
@@ -90,5 +137,10 @@ public class BST_traversal_DFS_BFS {
 		obj.preorder();
 		obj.postorder();
 		obj.levelorder();
+		obj.insert(14);obj.inorder();
+		obj.delete(14);obj.inorder();
+		obj.delete(20);obj.inorder();
+		obj.delete(1);obj.inorder();
+		obj.delete(10);obj.inorder();
 	}
 }
