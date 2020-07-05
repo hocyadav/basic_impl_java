@@ -120,6 +120,22 @@ class BST{
 		while(t.left != null) t = t.left;
 		return t;
 	}
+	
+	public void search_(int key) {
+		if(rec_search(root, key)) {
+			System.out.println("FOUND Value "+key);
+			return;
+		}
+		System.err.println("NOT FOUND Value "+key);
+		
+	}
+
+	private boolean rec_search(Node root, int key) {
+		if(root == null) return false;
+		if(root.val == key) return true;
+		if(key < root.val) return rec_search(root.left, key);
+		else return rec_search(root.right, key);
+	}
 }
 
 /**Test Binary data structure**/
@@ -140,6 +156,7 @@ public class BST_DFS_BFS_Delete_Insert {
 		obj.insert(14);obj.inorder();
 		obj.delete(14);obj.inorder();
 		obj.delete(20);obj.inorder();
+		obj.search_(10);obj.search_(20);obj.search_(1);
 		obj.delete(1);obj.inorder();
 		obj.delete(10);obj.inorder();
 	}
