@@ -123,7 +123,7 @@ class BST{
 }
 
 /**Test Binary data structure**/
-public class BST_traversal_DFS_BFS {
+public class BST_DFS_BFS_Delete_Insert {
 	public static void main(String[] args) {
 		BST obj = new BST();
 		obj.inorder();
