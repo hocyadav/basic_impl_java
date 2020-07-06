@@ -2,10 +2,15 @@ package july6th;
 
 public class Smallest_subarry_TargetSumK {
 	public static void main(String[] args) {
-		int[] arr = {10, 5, 2, 7, 1, 9};
+		int[] arr = {10, 5, 2, 7, 1, 9 };
 		int target = 15;
-		System.out.println(smallestSubset(arr, target));
-		System.out.println(largetSubset(arr, target));
+		System.out.println("smallest sub array "+smallestSubset(arr, target));//only for +ve
+		System.out.println("largest sub array "+largetSubset(arr, target));//only for +ve
+		
+		int[] arr2 = {2,3,1,2,4,3};
+		int target2 = 7;
+		System.out.println("smallest sub array "+smallestSubset(arr2, target2));//only for +ve
+		System.out.println("largest sub array "+largetSubset(arr2, target2));//only for +ve
 	}
 
 	//traverse -> local sum -> if locasum >= target then update result : note : change if to while
@@ -37,7 +42,9 @@ public class Smallest_subarry_TargetSumK {
 			localSum += arr[j];//get local sum
 			j++;//incremtn pointer
 			while(localSum >= target) {
-				result = Math.max(result, j - i);
+				if(localSum == target) {
+					result = Math.max(result, j - i);
+				}
 				localSum -= arr[i];
 				i++;
 			}
