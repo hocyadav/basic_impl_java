@@ -1,5 +1,5 @@
 package july6th;
-
+/** https://www.evernote.com/l/AGDRqq0HjBxCWJnVE6_C_7lP4hWQ1Fj8lSo/ **/
 public class GoldmanToyDistribution {
 	public static void main(String[] args) {
 		System.out.println("student who got defective toy : "+returnLastWrongToy(5,2,1));

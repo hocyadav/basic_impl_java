@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-
+/** https://www.evernote.com/l/AGDRqq0HjBxCWJnVE6_C_7lP4hWQ1Fj8lSo/ **/
 public class GoldmanEncodeDecode {
 	public static void main(String[] args) {
 		System.out.println(encode("hariom", "12345"));
