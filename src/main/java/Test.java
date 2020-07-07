@@ -1,3 +1,4 @@
+
 class Node {
 	String data;
 	Node left;
@@ -6,9 +7,7 @@ class Node {
 	public Node(String data) {
 		this.data = data;
 	}
-	
 }
-
 class BST {
 	Node root;
 	int count = 0;
@@ -17,7 +16,6 @@ class BST {
 		rec(root);
 		return count;
 	}
-	
 	
 //	public int rec1(Node root) {
 //		if(root == null) return 0;
@@ -41,13 +39,11 @@ class BST {
 //		
 //		
 //	}
-	
 
 	private void rec(Node root) {
 		//base case
 		if(root == null) 
 			return;
-		
 		if(root.left == null && root.right == null) {//leaf
 			count++;
 		}
@@ -77,11 +73,8 @@ class BST {
 				count++;
 			}
 		}
-		
 	}
-	
 }
-
 
 public class Test {
 	public static void main(String[] args) {
@@ -100,11 +93,6 @@ public class Test {
 		
 		int clumps = tree.clumps();
 		System.out.println(clumps);
-		
-		
-		
-		
-		
 		
 	}
 }
