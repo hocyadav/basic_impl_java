@@ -1,3 +1,4 @@
+package oldDefault;
 
 class test{
 	int a;
