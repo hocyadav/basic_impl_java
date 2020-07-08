@@ -1,6 +1,8 @@
 package oldDefault;
 
-/**fractual inter interview**/
+/**fractual inter interview
+ * impl own marker interface and class
+ * **/
 class Node1{
 	int data;
 	Node1 next;
