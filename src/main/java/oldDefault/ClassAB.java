@@ -1,4 +1,6 @@
 package oldDefault;
+
+/**fractual inter interview**/
 class Node1{
 	int data;
 	Node1 next;
