@@ -1,5 +1,7 @@
 package oldDefault;
-
+/**impatus interview 
+ * convert to reference type 
+ * **/
 class test{
 	int a;
 	int b;
