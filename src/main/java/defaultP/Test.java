@@ -1,5 +1,6 @@
 package defaultP;
 
+/** impatus 2nd round **/
 public class Test {
 	public static void main(String[] args) {
 		int[] arr1 = {1,2,3,4,5,10,20,50,100};
