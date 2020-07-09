@@ -63,3 +63,15 @@ public class LRUCacheIMPL {
 		lru.refer(100); lru.print();
 	}
 }
+
+/**
+LRU : 
+LRU : 1 
+LRU : 1 
+LRU : 11 1 
+LRU : 12 11 1 
+LRU : 13 12 11 
+LRU : 13 12 11 
+LRU : 100 13 12 
+
+ */
