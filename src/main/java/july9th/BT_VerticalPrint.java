@@ -78,4 +78,19 @@ public class BT_VerticalPrint {
 		tree.printVertical();
 	}
 }
+/**
+ * 
+Inorder : 12 
+Inorder : 11 12 
+Inorder : 11 12 15 
+Inorder : 19 11 12 15 
+Inorder : 115 19 11 12 15 
+Inorder : 115 19 150 11 12 15 
+-3 [115]
+-2 [19]
+-1 [11, 150]
+0 [12]
+1 [15]
 
+ * 
+ */
