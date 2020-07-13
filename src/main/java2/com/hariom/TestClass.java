@@ -22,23 +22,22 @@ class Node{
 /** impl **/
 class BTree{
 	Node root;
-	Map<Integer, List<Node>> map = new TreeMap<>();
 	
-	public void levelOrder() {
+	public void levelOrder__() {
 		Queue<Node> qq = new LinkedList();
 		qq.add(root);
-		System.out.println("level order :");
+		System.out.print("level order :");
 		while(!qq.isEmpty()) {
-			Node nn = qq.poll();//offer add, poll
+			Node nn = qq.poll();//offer add, remove, peek, poll=peek+remove
 			System.out.print(nn.data+" ");
 			
 			if(nn.left != null) qq.add(nn.left);
 			if(nn.right != null) qq.add(nn.right);
-			
 		}
+		System.out.println();
 	}
 	
-	public void levelOrder2() {
+	public void levelOrder__PrintLevelWise() {
 		Queue<Node> qq = new LinkedList<>();
 		qq.add(root);
 		
@@ -49,7 +48,6 @@ class BTree{
 				Node nn = qq.poll();
 				list.add(nn.data);
 				
-				//System.out.print(nn.data+" ");
 				if(nn.left != null) qq.add(nn.left);
 				if(nn.right != null) qq.add(nn.right);
 			}
@@ -57,10 +55,7 @@ class BTree{
 			list.clear();
 		}
 	}
-	
 }
-
-
 
 public class TestClass {
 	public static void main(String[] args) {
@@ -71,9 +66,7 @@ public class TestClass {
 		tree.root.left.right = new Node(68);
 		tree.root.right = new Node(7);
 		tree.root.left.left.left = new Node(69);
-		//tree.levelOrder();
-		tree.levelOrder2();
-		
+		tree.levelOrder__();
+		tree.levelOrder__PrintLevelWise();
 	}
-
 }
