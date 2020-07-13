@@ -18,7 +18,7 @@ public class LocalDateTime_Ex {
 		System.out.println(format);
 		
 		String format3 = localDt//input localdatetime object 
-							.plusDays(2) //add days
+							.plusDays(2) //add days..this is like builder design pattern
 							.plusHours(1)//add time..its like lambda
 							.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM));//good
 		System.out.println(format3);
