@@ -2,7 +2,7 @@ package july11th.decorator.impl;
 
 import july11th.decorator.IceCream;
 
-public class Test {
+public class TestDecorator {
 	public static void main(String[] args) {
 		IceCream basic = new BasicIceCream();
 		System.out.println(basic.cost());
