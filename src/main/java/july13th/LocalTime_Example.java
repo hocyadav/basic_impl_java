@@ -19,3 +19,11 @@ public class LocalTime_Example {
 		
 	}
 }
+/**
+18:28:24.991
+06:20
+18:07:57
+6
+
+
+*/

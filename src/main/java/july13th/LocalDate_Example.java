@@ -24,3 +24,11 @@ public class LocalDate_Example {
 		
 	}
 }
+/**
+2020-07-13
+1989-06-26
+my birth day : MONDAY
+true
+1989-06-27
+
+*/
