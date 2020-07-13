@@ -1,7 +1,7 @@
-package defaultP;
+package oldDefault;
 
 /** impatus 2nd round **/
-public class Test {
+public class Test___ {
 	public static void main(String[] args) {
 		int[] arr1 = {1,2,3,4,5,10,20,50,100};
 		int[] arr2 = {13, 40, 57, 80, 90};
