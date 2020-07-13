@@ -4,6 +4,7 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
+/** LocalDate : date without time**/
 public class LocalDate_Example {
 	public static void main(String[] args) {
 		LocalDate localDate = LocalDate.now();
