@@ -10,30 +10,30 @@ public class Test_WaitNotify {
 		final Runnable producer = () -> {
 			while(true) {
 				try {
+					Thread.sleep(3000);
 					int i = atomicInteger.incrementAndGet();
 					System.out.println("producer : "+i);
 					qq.put(i);
-					Thread.sleep(2000);
 				} catch (InterruptedException e) {e.printStackTrace();}
 			}
 		};
 		
 		new Thread(producer).start();
-		new Thread(producer).start();
+		//new Thread(producer).start();
 		
 		final Runnable consumer = () -> {
 			while(true) {
 				Integer val;
 				try {
+					Thread.sleep(5000);
 					val = qq.take();
-					Thread.sleep(2000);
 					System.out.println("consumer : "+val);
 				} catch (InterruptedException e) {e.printStackTrace();}
 			}
 		};
 		
 		new Thread(consumer).start();
-		new Thread(consumer).start();
+		//new Thread(consumer).start();
 
 		
 	}

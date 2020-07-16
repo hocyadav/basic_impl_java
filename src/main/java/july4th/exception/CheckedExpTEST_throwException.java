@@ -6,7 +6,7 @@ public class CheckedExpTEST_throwException {
 		Amount a1 = new Amount("INR", 100);
 		//Amount a2 = new Amount("INR", 300);
 		Amount a2 = new Amount("USD", 300);
-		Amount m = adder2.addAmount(a1, a2);//method addamount is checked excetion - we have to check for exception
+		Amount m = adder2.addAmount(a1, a2);//method add amount is checked exception - we have to check for exception
 		System.out.println(m);
 	}
 }
