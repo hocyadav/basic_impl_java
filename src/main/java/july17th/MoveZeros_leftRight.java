@@ -53,3 +53,10 @@ public class MoveZeros_leftRight {
 
 
 }
+/**
+0 1 3 0 33 12 0 
+1 3 33 12 0 0 0 
+0 10 0 0 3 1 0 
+0 0 0 0 10 3 1 
+
+*/
