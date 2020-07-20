@@ -25,3 +25,8 @@ public class Count1Digit2DigitChar {
 		System.out.println(result);
 	}
 }
+/**
+4
+4
+3
+*/
