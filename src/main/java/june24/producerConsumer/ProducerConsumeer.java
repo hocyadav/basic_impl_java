@@ -2,6 +2,8 @@ package june24.producerConsumer;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class ProducerConsumeer {
@@ -23,9 +25,16 @@ public class ProducerConsumeer {
 				System.out.println("producer "+qq);
 			}
 		};
+		//m1 using thread - working
 		//start runnable obj by sending inside thread
-		new Thread(producer).start();
 		//new Thread(producer).start();
+		//new Thread(producer).start();
+		
+		//m2
+		ExecutorService service = Executors.newFixedThreadPool(10);
+		service.submit(producer);
+		service.submit(producer);//starting 2nd producer thread
+		
 		
 		
 		final Runnable consumer = () -> {
@@ -39,9 +48,15 @@ public class ProducerConsumeer {
 				} catch (InterruptedException e) {e.printStackTrace();}
 			}
 		};
-		
-		new Thread(consumer).start();
+		//m1 using thread - working
 		//new Thread(consumer).start();
+		//new Thread(consumer).start();
+		
+		//m2
+		ExecutorService service2 = Executors.newFixedThreadPool(10);
+		service2.submit(consumer);
+		service2.submit(consumer);//starting 2nd consumer thread
+		
 		Thread.sleep(2000);
 	}
 }
