@@ -98,3 +98,15 @@ public class SegmentTree_RangeSumQuery {
 		tree.printSegmentTree_inorder();
 	}
 }
+/**
+0,0 : 1
+0,1 : 1
+1,1 : 0
+0,2 : 3
+2,2 : 2
+0,4 : 11
+3,3 : 5
+3,4 : 8
+4,4 : 3
+
+ */
