@@ -1,29 +1,19 @@
 package july25th.copy3;
 
-public class Test {
-	public static void main(String[] args) throws InterruptedException {
-		MyConnectionPool obj = new MyConnectionPool(4);
+public class Test2 {
+	public static void main(String[] args) {
+		ConnectionImpl2 obj = new ConnectionImpl2(4);
+		obj.printBQ();
+		
+		ProducerIMPL connObj = obj.getFromBQ();
+		connObj.execute("my sample task");
+		System.out.println("conn id : "+connObj.getConnObjID());
+		obj.printBQ();
 
-		Runnable runnable = new Runnable() {
-			@Override
-			public void run() {
-				while(true) {
-					try {
-						obj.qqSize();
-						
-						ConnProducerImpl connObj = obj.checkout();
-						
-						connObj.execute("executing my sample task.....");
-						
-						obj.qqSize();
-						obj.close(connObj);
-						
-						Thread.sleep(3000);
-					} catch (InterruptedException e) { e.printStackTrace();}
-				}
-			}
-		};
-
-		new Thread(runnable).start();
+		ProducerIMPL connObj2 = obj.getFromBQ();
+		connObj2.execute("my sample task 33");
+		System.out.println("conn id : "+connObj2.getConnObjID());
+		obj.printBQ();
+		
 	}
 }
