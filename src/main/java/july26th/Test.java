@@ -31,3 +31,28 @@ public class Test {
 		connectionPool.print();
 	}
 }
+
+/**
+ * 
+Connection Pool (size 4) : 0 1 2 3 
+get connection obj from Connection Pool - id	: 0
+executing my sample task.....
+add connection obj back to Connection Pool - id	: 0
+
+Connection Pool (size 4) : 1 2 3 0 
+get connection obj from Connection Pool - id	: 1
+executing my sample task.....
+Connection Pool (size 3) : 2 3 0 
+get connection obj from Connection Pool - id	: 2
+executing my sample task.....
+Connection Pool (size 2) : 3 0 
+get connection obj from Connection Pool - id	: 3
+executing my sample task.....
+Connection Pool (size 1) : 0 
+get connection obj from Connection Pool - id	: 0
+executing my sample task.....
+Connection Pool (size 0) : 
+No connection Obj in Pool --- waiting ---
+
+ * 
+ */
