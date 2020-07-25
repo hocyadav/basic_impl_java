@@ -6,11 +6,11 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.stream.IntStream;
 
-public class MyConnectionPool extends Connection_Producer_Impl implements Connection_Consumer {
+public class MyConnectionPool extends ConnProducerImpl implements ConnConsumer {
 	//Connection_Consumer connectionImpl2Consumer;
 
 	int connectionPoolSize = 4;//default pool size
-	BlockingQueue<Connection_Producer_Impl> qq = null; 
+	BlockingQueue<ConnProducerImpl> qq = null; 
 
 	ReentrantLock lock = new ReentrantLock(true);
 	Condition cond1 = lock.newCondition();
@@ -19,13 +19,13 @@ public class MyConnectionPool extends Connection_Producer_Impl implements Connec
 	//create pool : add 10 object and create pool
 	public MyConnectionPool(int connectionPoolSize) {
 		this.connectionPoolSize = connectionPoolSize;
-		this.qq = new ArrayBlockingQueue<Connection_Producer_Impl>(connectionPoolSize);
+		this.qq = new ArrayBlockingQueue<ConnProducerImpl>(connectionPoolSize);
 
 		//this.connection1Producer = this;//since this is class is implementation of these interface
 		//this.connectionImpl2Consumer = this;
 		
 		for(int i = 0; i < this.connectionPoolSize; i++) {
-			Connection_Producer_Impl producerIMPL = new Connection_Producer_Impl();
+			ConnProducerImpl producerIMPL = new ConnProducerImpl();
 			producerIMPL.setConnObjID(i);
 			qq.add(producerIMPL);
 		}
@@ -33,9 +33,9 @@ public class MyConnectionPool extends Connection_Producer_Impl implements Connec
 	}
 
 	//checkout() - consumer : get 1 connection obj from pool
-	public Connection_Producer_Impl checkout() {
+	public ConnProducerImpl checkout() {
 		lock.lock();
-		Connection_Producer_Impl connObj = null;
+		ConnProducerImpl connObj = null;
 		try {
 			while(qq.size() == 0) {
 				cond1.await();
@@ -54,7 +54,7 @@ public class MyConnectionPool extends Connection_Producer_Impl implements Connec
 	}
 
 	//close() - producer : add connection back to pool
-	public void addToBQ(Connection_Producer_Impl connObj) {
+	public void close(ConnProducerImpl connObj) {
 		lock.lock();
 		System.out.println("adding back to BQ conn obj : "+connObj.getConnObjID());
 		try {
@@ -72,9 +72,9 @@ public class MyConnectionPool extends Connection_Producer_Impl implements Connec
 
 	public void printBQ() throws InterruptedException {
 		System.out.print("BQ conn OBJ : ");
-		BlockingQueue<Connection_Producer_Impl> temp = new ArrayBlockingQueue<Connection_Producer_Impl>(this.connectionPoolSize, true, this.qq);
+		BlockingQueue<ConnProducerImpl> temp = new ArrayBlockingQueue<ConnProducerImpl>(this.connectionPoolSize, true, this.qq);
 		for(int i = 0; i < temp.size(); i++) {
-			Connection_Producer_Impl take = temp.take();
+			ConnProducerImpl take = temp.take();
 			System.out.print(take.getConnObjID()+" ");
 		}
 		System.out.println();

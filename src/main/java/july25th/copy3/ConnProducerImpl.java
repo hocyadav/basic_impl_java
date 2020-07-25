@@ -1,6 +1,6 @@
 package july25th.copy3;
 
-public class Connection_Producer_Impl implements Connection_Producer{
+public class ConnProducerImpl implements ConnProducer{
 	int connObjID;
 
 	//execute() - task operation
@@ -9,7 +9,7 @@ public class Connection_Producer_Impl implements Connection_Producer{
 	}
 
 	@Override
-	public void addToBQ(Connection_Producer_Impl connObj) {
+	public void close(ConnProducerImpl connObj) {
 
 	}
 
