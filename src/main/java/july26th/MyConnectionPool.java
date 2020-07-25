@@ -8,26 +8,26 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class MyConnectionPool extends ConnProducerImpl implements ConnConsumer {
 	
-	int connectionPoolSize = 4;//default pool size
+	int CONNECTION_POOL_SIZE = 8;//default pool size
 	BlockingQueue<ConnProducerImpl> connectionPool = null; 
 
 	ReentrantLock lock = new ReentrantLock(true);
 	Condition cond1 = lock.newCondition();
 	Condition cond2 = lock.newCondition();
 
-	public MyConnectionPool(int connectionPoolSize) {
-		this.connectionPoolSize = connectionPoolSize;
-		this.connectionPool = new ArrayBlockingQueue<ConnProducerImpl>(connectionPoolSize);
+	/** create connection pool object and add to Blocking Queue (Thread Pool/Connection Pool)**/
+	public MyConnectionPool(int size) {
+		CONNECTION_POOL_SIZE = size;
+		connectionPool = new ArrayBlockingQueue<ConnProducerImpl>(size);
 
-		for(int i = 0; i < this.connectionPoolSize; i++) {
+		for(int i = 0; i < this.CONNECTION_POOL_SIZE; i++) {
 			ConnProducerImpl producerIMPL = new ConnProducerImpl();
 			producerIMPL.setConnObjID(i);
 			connectionPool.add(producerIMPL);
 		}
-		//System.out.println("Pool/BQ size : "+qq.size());
 	}
 
-	//checkout() - consumer : get 1 connection obj from pool
+	/** consumer : get single connection object from pool **/
 	public ConnProducerImpl checkout() {
 		lock.lock();
 		ConnProducerImpl connObj = null;
@@ -49,12 +49,12 @@ public class MyConnectionPool extends ConnProducerImpl implements ConnConsumer {
 		return connObj;
 	}
 
-	//close() - producer : add connection back to pool
+	/** producer : add connection object back to connection pool **/
 	public void close(ConnProducerImpl connObj) {
 		lock.lock();
 		System.out.println("add connection obj back to Connection Pool - id	: "+connObj.getConnObjID());
 		try {
-			while(currentPoolSize() == this.connectionPoolSize) {
+			while(currentPoolSize() == this.CONNECTION_POOL_SIZE) {
 				cond2.await();
 			}
 			connectionPool.add(connObj);
@@ -68,6 +68,7 @@ public class MyConnectionPool extends ConnProducerImpl implements ConnConsumer {
 		}
 	}
 
+	/** print connection pool **/
 	public void print() {
 		Iterator<ConnProducerImpl> it = connectionPool.iterator();
 		System.out.print("Connection Pool (size "+currentPoolSize()+") : ");
@@ -78,6 +79,7 @@ public class MyConnectionPool extends ConnProducerImpl implements ConnConsumer {
 		System.out.println();
 	}
 
+	/** get current connection pool size**/
 	private int currentPoolSize() {
 		return connectionPool.size();
 	}
