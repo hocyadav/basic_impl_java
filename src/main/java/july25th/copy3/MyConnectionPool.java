@@ -6,11 +6,8 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.stream.IntStream;
 
-public class ConnectionImpl2_connObjIMPL extends Connection_Producer_Impl implements Connection_Consumer {
-	//int connId;//type int is conn obj that is inside BQ
-	
-	//ProducerIMPL connection1Producer;
-	Connection_Consumer connectionImpl2Consumer;
+public class MyConnectionPool extends Connection_Producer_Impl implements Connection_Consumer {
+	//Connection_Consumer connectionImpl2Consumer;
 
 	int connectionPoolSize = 4;//default pool size
 	BlockingQueue<Connection_Producer_Impl> qq = null; 
@@ -20,12 +17,12 @@ public class ConnectionImpl2_connObjIMPL extends Connection_Producer_Impl implem
 	Condition cond2 = lock.newCondition();
 
 	//create pool : add 10 object and create pool
-	public ConnectionImpl2_connObjIMPL(int connectionPoolSize) {
+	public MyConnectionPool(int connectionPoolSize) {
 		this.connectionPoolSize = connectionPoolSize;
 		this.qq = new ArrayBlockingQueue<Connection_Producer_Impl>(connectionPoolSize);
 
 		//this.connection1Producer = this;//since this is class is implementation of these interface
-		this.connectionImpl2Consumer = this;
+		//this.connectionImpl2Consumer = this;
 		
 		for(int i = 0; i < this.connectionPoolSize; i++) {
 			Connection_Producer_Impl producerIMPL = new Connection_Producer_Impl();
@@ -36,7 +33,7 @@ public class ConnectionImpl2_connObjIMPL extends Connection_Producer_Impl implem
 	}
 
 	//checkout() - consumer : get 1 connection obj from pool
-	public Connection_Producer_Impl getFromBQ() {
+	public Connection_Producer_Impl checkout() {
 		lock.lock();
 		Connection_Producer_Impl connObj = null;
 		try {

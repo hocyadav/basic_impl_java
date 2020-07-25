@@ -2,7 +2,7 @@ package july25th.copy3;
 
 public class Test {
 	public static void main(String[] args) throws InterruptedException {
-		ConnectionImpl2_connObjIMPL obj = new ConnectionImpl2_connObjIMPL(4);
+		MyConnectionPool obj = new MyConnectionPool(4);
 
 		Runnable runnable = new Runnable() {
 			@Override
@@ -10,7 +10,7 @@ public class Test {
 				while(true) {
 					try {
 						obj.qqSize();
-						Connection_Producer_Impl connObj = obj.getFromBQ();
+						Connection_Producer_Impl connObj = obj.checkout();
 						connObj.execute("executing my sample task.....");
 						System.out.println("conn id : "+connObj.getConnObjID());
 						obj.qqSize();
