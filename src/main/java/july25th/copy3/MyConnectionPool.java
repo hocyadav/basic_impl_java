@@ -1,5 +1,6 @@
 package july25th.copy3;
 
+import java.util.Iterator;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.locks.Condition;
@@ -8,7 +9,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class MyConnectionPool extends ConnProducerImpl implements ConnConsumer {
 	
 	int connectionPoolSize = 4;//default pool size
-	BlockingQueue<ConnProducerImpl> qq = null; 
+	BlockingQueue<ConnProducerImpl> connectionPool = null; 
 
 	ReentrantLock lock = new ReentrantLock(true);
 	Condition cond1 = lock.newCondition();
@@ -16,12 +17,12 @@ public class MyConnectionPool extends ConnProducerImpl implements ConnConsumer {
 
 	public MyConnectionPool(int connectionPoolSize) {
 		this.connectionPoolSize = connectionPoolSize;
-		this.qq = new ArrayBlockingQueue<ConnProducerImpl>(connectionPoolSize);
+		this.connectionPool = new ArrayBlockingQueue<ConnProducerImpl>(connectionPoolSize);
 
 		for(int i = 0; i < this.connectionPoolSize; i++) {
 			ConnProducerImpl producerIMPL = new ConnProducerImpl();
 			producerIMPL.setConnObjID(i);
-			qq.add(producerIMPL);
+			connectionPool.add(producerIMPL);
 		}
 		//System.out.println("Pool/BQ size : "+qq.size());
 	}
@@ -31,10 +32,11 @@ public class MyConnectionPool extends ConnProducerImpl implements ConnConsumer {
 		lock.lock();
 		ConnProducerImpl connObj = null;
 		try {
-			while(qq.size() == 0) {
+			while(currentPoolSize() == 0) {
+				System.out.println("No connection Obj in Pool --- waiting ---");
 				cond1.await();
 			}
-			connObj = qq.take();
+			connObj = connectionPool.take();
 			cond2.signalAll();
 			System.out.println("get connection obj from Connection Pool - id	: "+connObj.getConnObjID());
 			Thread.sleep(2000);
@@ -52,11 +54,12 @@ public class MyConnectionPool extends ConnProducerImpl implements ConnConsumer {
 		lock.lock();
 		System.out.println("add connection obj back to Connection Pool - id	: "+connObj.getConnObjID());
 		try {
-			while(qq.size() == this.connectionPoolSize) {
+			while(currentPoolSize() == this.connectionPoolSize) {
 				cond2.await();
 			}
-			qq.add(connObj);
+			connectionPool.add(connObj);
 			cond1.signalAll();
+			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} finally {
@@ -65,18 +68,17 @@ public class MyConnectionPool extends ConnProducerImpl implements ConnConsumer {
 		}
 	}
 
-	public void printBQ() throws InterruptedException {
-		System.out.print("BQ conn OBJ : ");
-		BlockingQueue<ConnProducerImpl> temp = new ArrayBlockingQueue<ConnProducerImpl>(this.connectionPoolSize, true, this.qq);
-		for(int i = 0; i < temp.size(); i++) {
-			ConnProducerImpl take = temp.take();
-			System.out.print(take.getConnObjID()+" ");
+	public void print() {
+		Iterator<ConnProducerImpl> it = connectionPool.iterator();
+		System.out.print("Connection Pool (size "+currentPoolSize()+") : ");
+		while(it.hasNext()) {
+			ConnProducerImpl conn = it.next();
+			System.out.print(conn.getConnObjID()+" ");
 		}
 		System.out.println();
 	}
-	
-	public void qqSize() {
-		System.out.println("Connection Pool size : "+qq.size());
+
+	private int currentPoolSize() {
+		return connectionPool.size();
 	}
-	
 }

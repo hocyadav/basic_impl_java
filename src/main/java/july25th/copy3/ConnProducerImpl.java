@@ -5,7 +5,12 @@ public class ConnProducerImpl implements ConnProducer{
 
 	//execute() - task operation
 	public void execute(String taskToExecute) {
-		System.out.println(taskToExecute);
+		try {
+			System.out.println(taskToExecute);
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
