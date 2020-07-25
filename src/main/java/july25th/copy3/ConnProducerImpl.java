@@ -9,10 +9,8 @@ public class ConnProducerImpl implements ConnProducer{
 	}
 
 	@Override
-	public void close(ConnProducerImpl connObj) {
-
-	}
-
+	public void close(ConnProducerImpl connObj) {}
+	
 	public int getConnObjID() {
 		return connObjID;
 	}

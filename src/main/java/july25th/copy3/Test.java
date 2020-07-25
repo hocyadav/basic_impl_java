@@ -10,11 +10,14 @@ public class Test {
 				while(true) {
 					try {
 						obj.qqSize();
+						
 						ConnProducerImpl connObj = obj.checkout();
+						
 						connObj.execute("executing my sample task.....");
-						System.out.println("conn id : "+connObj.getConnObjID());
+						
 						obj.qqSize();
 						obj.close(connObj);
+						
 						Thread.sleep(3000);
 					} catch (InterruptedException e) { e.printStackTrace();}
 				}
