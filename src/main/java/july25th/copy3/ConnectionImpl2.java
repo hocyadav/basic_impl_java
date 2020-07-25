@@ -6,11 +6,11 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.stream.IntStream;
 
-public class ConnectionImpl2 extends ProducerIMPL implements ConnectionImpl2Consumer {
+public class ConnectionImpl2 extends Connection_Producer_Impl implements Connection_Consumer {
 	//int connId;//type int is conn obj that is inside BQ
 	
-	ProducerIMPL connection1Producer;
-	ConnectionImpl2Consumer connectionImpl2Consumer;
+	Connection_Producer_Impl connection1Producer;
+	Connection_Consumer connectionImpl2Consumer;
 
 	int connectionPoolSize = 4;//default pool size
 	BlockingQueue<Integer> qq = null; 
@@ -32,7 +32,7 @@ public class ConnectionImpl2 extends ProducerIMPL implements ConnectionImpl2Cons
 	}
 
 	//checkout() - consumer : get 1 connection obj from pool
-	public ProducerIMPL getFromBQ() {
+	public Connection_Producer_Impl getFromBQ() {
 		lock.lock();
 		try {
 			while(qq.size() == 0) {
