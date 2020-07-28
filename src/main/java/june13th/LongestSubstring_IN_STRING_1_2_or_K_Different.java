@@ -6,8 +6,6 @@ import java.util.Map;
 //logic : Map + 2 pointer --> traverse (Add in map + Check in map + update max longest)
 public class LongestSubstring_IN_STRING_1_2_or_K_Different {
 	public static void main(String[] args) {
-		String str = "abcabcabcaaaaaa";
-		
 		int r = longestSubstring_kDifferent_Try2("abcabcabcaaaaaa");
 		System.out.println(r);
 	}
@@ -22,7 +20,7 @@ public class LongestSubstring_IN_STRING_1_2_or_K_Different {
 		}
 		
 		//1. Map + 2 pointer
-		Map<Character, Integer> map = new HashMap();
+		Map<Character, Integer> map = new HashMap<>();
 		int l = 0;
 		
 		//2. traverse (add/put in map + check map + update max)
