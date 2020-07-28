@@ -18,7 +18,7 @@ public class LongestSubstring_IN_STRING_ALLDifferent {
 			return result;
 		}
 		//1. set + 2 pointers
-		Set<Character> set = new HashSet();
+		Set<Character> set = new HashSet<>();
 		int l = 0;
 		int r = 0;
 		
