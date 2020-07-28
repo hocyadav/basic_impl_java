@@ -22,7 +22,7 @@ public class LongestSubstring_K_Unique {
 			map.putIfAbsent(c, 0);//create key if not prpesent
 			map.put(c, map.get(c) + 1);
 			
-			while(l < str.length() && map.size() > 2) {
+			while(l < str.length() && map.size() > 2) {//window is unstable
 				char cc = str.charAt(l);
 				map.put(cc, map.get(cc) - 1);
 				if(map.get(cc) == 0) map.remove(cc);
