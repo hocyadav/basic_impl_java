@@ -25,7 +25,8 @@ public class LongestSubstring_IN_STRING_ALLDifferent {
 		//2. check in set + add in set + update max longest length
 		for (r = 0; r < str.length(); r++) {
 			char cr = str.charAt(r);
-			while(set.contains(cr)) {//replace if with while
+			while(set.contains(cr)) {//replace if with while, cut all the left until it contain r
+				//https://photos.app.goo.gl/MyPnMuKikedTA37J6
 				set.remove(cr);
 				l++;
 			}
