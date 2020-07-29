@@ -23,6 +23,7 @@ public class SlidingWindow_fixedWindow_withMinimunSUm {
 			localSum += (arr[r] - arr[r - windowSize]);
 			result = Integer.min(result, localSum);//here we can store index also 
 		}
-		System.out.println(result);
+		System.out.println("result "+result);
 	}
 }
+//result 11
