@@ -2,7 +2,6 @@ package july29th;
 
 public class SlidingWindow_sumGE_K {
 	public static void main(String[] args) {
-		String str = "abcabc";
 		int[] arr = {1, 2, 3, 4, 5, 6, 7, 8};
 		int sum = 21;
 		slidingWindowGE_K(arr, sum);
