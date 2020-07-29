@@ -16,14 +16,26 @@ public class SlidingWindow_fixedWindow_withMinimunSUm {
 		int firstWindowSum = 0;
 		for (int i = 0; i < windowSize; i++)
 			firstWindowSum += arr[i];
+		System.out.println("1st fixed window sum : "+firstWindowSum);
 		
 		int localSum = firstWindowSum;
 		//int l = 0;//2 pointer its like rubber - one end is left and other end is right
 		for (int r = windowSize; r < arr.length; r++) {
 			localSum += (arr[r] - arr[r - windowSize]);
+			System.out.println("fixed window sum : "+localSum);
 			result = Integer.min(result, localSum);//here we can store index also 
 		}
-		System.out.println("result "+result);
+		System.out.println("min fixed window sum : "+result);
 	}
 }
-//result 11
+/**
+1st fixed window sum : 16
+fixed window sum : 11
+fixed window sum : 13
+fixed window sum : 14
+fixed window sum : 17
+fixed window sum : 12
+min fixed window sum : 11
+
+
+*/
