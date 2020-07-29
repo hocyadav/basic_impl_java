@@ -27,3 +27,20 @@ public class SlidingWindow_sumGE_K {
 		System.out.println(result);
 	}
 }
+/**
+out - 1
+out - 3
+out - 6
+out - 10
+out - 15
+out - 21
+out - 28
+while - 28
+while - 27
+while - 25
+while - 22
+out - 26
+while - 26
+4
+
+*/
