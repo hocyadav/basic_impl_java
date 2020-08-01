@@ -8,13 +8,18 @@ import java.util.Map;
 import java.util.Set;
 
 public class CollectionsSingleton {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		/** singleton map -- only get method are visible**/
 		Map<Integer, String> singletonMap = Collections.singletonMap(1, "hariom");
 		System.out.println(singletonMap);
 		
 		/** singleton list **/
 		List<String> list = new ArrayList();
+		
+//		synchronized (list) {
+//			list.wait();
+//		}
+		
 		list.add("hari");
 		list.add("om");
 		list.add("yadav");
