@@ -30,3 +30,10 @@ public class CollectionsSingleton {
 		System.out.println(singleton);
 	}
 }
+/**
+ * 
+{1=hariom}
+[[hari, om, yadav]]
+[{11=hari, 12=chandan, 13=yadav}]
+ * 
+ */
