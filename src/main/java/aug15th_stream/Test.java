@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -96,6 +97,27 @@ public class Test {
 						.count();
 		System.out.println("Good rows : "+count);
 		rows.close();
+		
+		
+		//read file -> split -> filter 2nd index i.e. 2nd column -> print
+		Stream<String> lines = Files.lines(Paths.get("data2.txt"));
+		lines
+			.map(x -> x.split(","))
+			.filter(x -> x.length == 3)//filter only good rows
+			.filter(x -> Integer.parseInt(x[1]) > 15)
+			.forEach(x -> System.out.println(x[0]+" "+x[1]+" "+x[2]));
+		lines.close();
+		
+		//read csv file and collect in map - same as above + collect in map
+		Stream<String> rows2 = Files.lines(Paths.get("data2.txt"));
+		
+		Map<String, Integer> collect2 = rows2.map(x -> x.split(","))
+										.filter(x -> x.length == 3)//only good rows
+										.filter(x -> Integer.parseInt(x[1]) > 15)
+										.collect(Collectors.toMap(x -> x[0], 
+																x -> Integer.parseInt(x[1])));
+	
+		
 			
 	}
 }
