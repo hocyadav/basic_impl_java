@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Map;
+import java.util.function.BinaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -98,6 +100,7 @@ public class Test {
 		System.out.println("Good rows : "+count);
 		rows.close();
 		
+		System.out.println("\n");
 		
 		//read file -> split -> filter 2nd index i.e. 2nd column -> print
 		Stream<String> lines = Files.lines(Paths.get("data2.txt"));
@@ -108,6 +111,7 @@ public class Test {
 			.forEach(x -> System.out.println(x[0]+" "+x[1]+" "+x[2]));
 		lines.close();
 		
+		System.out.println("\n");
 		//read csv file and collect in map - same as above + collect in map
 		Stream<String> rows2 = Files.lines(Paths.get("data2.txt"));
 		
@@ -116,6 +120,31 @@ public class Test {
 										.filter(x -> Integer.parseInt(x[1]) > 15)
 										.collect(Collectors.toMap(x -> x[0], 
 																x -> Integer.parseInt(x[1])));
+		rows2.close();
+		
+		//reduce()
+		Double reduce = Stream.of(1.2,2.3,1.0)
+						.reduce(0.0, new BinaryOperator<Double>() {//0.0 is initial value
+								@Override
+								public Double apply(Double a, Double b) {//1st argument is running sum, 2nd is new stram value
+									
+									return a + b;
+								}
+						});
+		System.out.println(reduce);
+		//above code in lambda form
+		Double reduce2 = Stream.of(1.2,2.3,1.0)
+								.reduce(0.0, (Double a, Double b) -> a+b);
+		
+		//summary statics only for int num
+		IntSummaryStatistics summaryStatistics = IntStream.of(1,2,3,0,20)
+														.summaryStatistics();
+		System.out.println(summaryStatistics);
+		System.out.println(summaryStatistics.getMin());
+		System.out.println(summaryStatistics.getMax());
+		System.out.println(summaryStatistics.getAverage());
+		
+		
 	
 		
 			
