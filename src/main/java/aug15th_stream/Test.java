@@ -135,6 +135,9 @@ public class Test {
 		//above code in lambda form
 		Double reduce2 = Stream.of(1.2,2.3,1.0)
 								.reduce(0.0, (Double a, Double b) -> a+b);
+		//OR
+		Double reduce3 = Stream.of(1.2,2.3,1.0)
+								.reduce(0.0, (Double runningSum, Double nextStreamValue) -> runningSum + nextStreamValue);
 		
 		//summary statics only for int num
 		IntSummaryStatistics summaryStatistics = IntStream.of(1,2,3,0,20)
@@ -143,10 +146,5 @@ public class Test {
 		System.out.println(summaryStatistics.getMin());
 		System.out.println(summaryStatistics.getMax());
 		System.out.println(summaryStatistics.getAverage());
-		
-		
-	
-		
-			
 	}
 }
