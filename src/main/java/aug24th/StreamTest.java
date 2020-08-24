@@ -75,3 +75,15 @@ public class StreamTest {
 	}
 
 }
+/**
+ * 
+3
+4
+-----------
+IntSummaryStatistics{count=6, sum=21, min=1, average=3.500000, max=6}
+-----------
+2.5
+IntSummaryStatistics{count=4, sum=10, min=1, average=2.500000, max=4}
+
+ * 
+ */
