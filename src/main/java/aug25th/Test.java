@@ -65,3 +65,9 @@ public class Test {
 	}
 
 }
+/**
+Car [color=Black, type=BMW]
+Car [color=green, type=SUV]
+
+ * 
+ */
