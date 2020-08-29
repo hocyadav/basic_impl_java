@@ -168,7 +168,38 @@ public class PersonStream {
 
 
 	}
+	
+	/**
+	 * 
+collect 
+{false=[chandan, swarn, rajat, om, hariom, omprakash], true=[hari, neha, op, op]}
+collect2 
+{false=[chandan, swarn, rajat, om, hariom, omprakash], true=[hari, neha, op, op]}
+collect3 
+{false=[chandan, swarn, rajat, om, hariom, omprakash], true=[hari, neha, op, op]}
+collect4 
+{false=[chandan, swarn, rajat, om, hariom, omprakash], true=[hari, neha, op, op]}
+collect5 
+{false=[chandan, swarn, rajat, om, hariom, omprakash], true=[hari, neha, op, op]}
+collect6 
+{brazil=[chandan, swarn], canada=[hariom, omprakash], india=[hari, neha, op, op], us=[rajat, om]}
+collect7 
+{rajat=[rajat], op=[op], hariom=[hariom], om=[om], chandan=[chandan], op=[op], hari=[hari], swarn=[swarn], omprakash=[omprakash], neha=[neha]}
+collect8 
+{false=6, true=4}
+collect9 
+{false=[chandan, swarn, rajat, om, hariom, omprakash], true=[hari, neha, op, op]}
+collect10 
+{brazil=[chandan, swarn], canada=[hariom, omprakash], india=[hari, neha, op, op], us=[rajat, om]}
+{false=[INDIA, INDIA, INDIA, BRAZIL, BRAZIL, US, US, CANADA, CANADA], true=[INDIA]}
+{false=[CANADA, INDIA, BRAZIL, US], true=[INDIA]}
+{false=[INDIA, INDIA, INDIA, BRAZIL, BRAZIL, US, US, CANADA, CANADA], true=[INDIA]}
+{false=[CANADA, INDIA, BRAZIL, US], true=[INDIA]}
+{brazil=[CHANDAN, SWARN], canada=[HARIOM, OMPRAKASH], india=[HARI, NEHA, OP, OP], us=[RAJAT, OM]}
+{brazil=[SWARN, CHANDAN], canada=[OMPRAKASH, HARIOM], india=[HARI, OP, NEHA], us=[RAJAT, OM]}
 
+	 * @return
+	 */
 
 	public static List<Person> getAllPerson() {
 		return Arrays.asList(
@@ -188,5 +219,4 @@ public class PersonStream {
 				);
 
 	}
-
 }
