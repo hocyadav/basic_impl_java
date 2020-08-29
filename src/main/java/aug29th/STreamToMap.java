@@ -7,7 +7,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class STream {
+public class STreamToMap {
 	public static void main(String[] args) {
 		List<String> list = 
 				Stream.of("hari", "om", "yadav")//stream of String
