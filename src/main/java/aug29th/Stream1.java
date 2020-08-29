@@ -108,6 +108,7 @@ public class Stream1 {
 
 
 	}
+	
 
 	public static boolean check1(String str) {
 		if (str.length() > 4) return true;
@@ -115,3 +116,27 @@ public class Stream1 {
 	}
 
 }
+/**
+ * 
+{apple=[apple, apple], cat=[cat, cat], mangoes=[mangoes], dog=[dog, dog, dog]}
+{apple=[apple, apple], cat=[cat, cat], mangoes=[mangoes], dog=[dog, dog, dog]}
+{apple=2, cat=2, mangoes=1, dog=3}
+apple
+apple
+mangoes
+cat
+dog
+cat
+dog
+dog
+apple,apple,mangoes,cat,dog,cat,dog,dog
+[apple, cat, mangoes, dog]
+[apple, cat, dog, mangoes]
+[apple, apple, mangoes, cat, dog, cat, dog, dog]
+[apple, cat, mangoes, dog]
+map with T/F --> {false=[cat, dog, cat, dog, dog], true=[apple, apple, mangoes]}
+true list --> [apple, apple, mangoes]
+false list --> [cat, dog, cat, dog, dog]
+
+ * 
+ */
