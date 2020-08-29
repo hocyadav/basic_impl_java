@@ -10,7 +10,7 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Stream1 {
+public class StreamGroupBy {
 	public static void main(String[] args) {
 		Stream<String> stream = Stream.of("apple", "apple", "mangoes", "cat", "dog", "cat", "dog", "dog");
 		Map<String, List<String>> collect = stream.collect(Collectors.groupingBy(word->word));
@@ -39,11 +39,11 @@ public class Stream1 {
 		//		
 
 		asList.stream()
-		.filter(Stream1::check1)//functional style
+		.filter(StreamGroupBy::check1)//functional style
 		.forEach(System.out::println);
 		//https://www.youtube.com/watch?v=yAgp10gP5uQ&list=PLgjd7_JBgEE7oL1SHWVGzwKHO-XMhwArl&index=23&t=0s
 		asList.stream()
-		.filter(t -> !Stream1.check1(t))//negative above condition 
+		.filter(t -> !StreamGroupBy.check1(t))//negative above condition 
 		.forEach(System.out::println);
 
 		//IMP : order of method invocation is imp
