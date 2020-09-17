@@ -4,6 +4,7 @@ import java.nio.charset.Charset;
 /**
  * 
  * @author hariomyadav
+ * https://www.youtube.com/watch?v=dh8ura4rVUM
  * https://www.baeldung.com/java-string-to-byte-array
  */
 public class MessageDigest_1 {
